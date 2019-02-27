@@ -1,1 +1,1 @@
-web: gunicorn lab4-heroku:app
+web: gunicorn lab6-webhook:app
