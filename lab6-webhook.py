@@ -1,6 +1,7 @@
 import sqlite3
 from flask import Flask, request, jsonify, send_from_directory
 import os
+import requests
 
 app = Flask(__name__)
 
@@ -43,6 +44,16 @@ def hook():
         print(webhookMessage)
         messageId = webhookMessage["data"]["id"]
         print(messageId)
+        url = "https://api.ciscospark.com/v1/messages/" + messageId
+        r = requests.get(url, headers={'Authorization': 'Bearer <your-botaccess-token> '})
+        message = r.json()["text"]
+        print(message)
+        mentionedPeopleId = webhookMessage["data"]["mentionedPeople"][0]
+        print(mentionedPeopleId)
+        if mentionedPeopleId == "Y2lzY29zcGFyazovL3VzL0FQUExJQ0FUSU9OLzM2YjYzNDJiLWNlMjMtNDIyZC04NDFkLTQxOGNjZGZjNjM5Yg":
+                roomId = r.json()["roomId"]
+                url = "https://api.ciscospark.com/v1/messages"
+                r = requests.post(url, headers={'Authorization': 'Bearer YWRkMWIyMGQtY2EwNC00ZDJjLTkxNTYtZjc3ZGU2YzRjYjkyMGUwN2Q2MGItNGYw_PF84_consumer'}, data={'roomId': roomId, 'text': 'Sziasztok világokok!'})
         return jsonify(webhookMessage)
 
 @app.route("/api/about", methods = ['POST', 'GET'])
