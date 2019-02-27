@@ -45,7 +45,7 @@ def hook():
         messageId = webhookMessage["data"]["id"]
         print(messageId)
         url = "https://api.ciscospark.com/v1/messages/" + messageId
-        r = requests.get(url, headers={'Authorization': 'Bearer <your-botaccess-token> '})
+        r = requests.get(url, headers={'Authorization': 'Bearer YWRkMWIyMGQtY2EwNC00ZDJjLTkxNTYtZjc3ZGU2YzRjYjkyMGUwN2Q2MGItNGYw_PF84_consumer '})
         message = r.json()["text"]
         print(message)
         mentionedPeopleId = webhookMessage["data"]["mentionedPeople"][0]
