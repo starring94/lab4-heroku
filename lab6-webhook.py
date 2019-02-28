@@ -71,7 +71,7 @@ def bot():
 
 	#send answer if bot mentioned
 	if message[0:18] == "wth2018-2133 Hello":
-                print('ÜZI: ' + message)
+		print('ÜZI: ' + message)
 		roomId = r.json()["roomId"]
 		r = requests.post(messageApiUrl, headers={'Authorization': 'Bearer ' + botAccessToken}, data={'roomId': roomId, 'text': 'Hello from your bot!'})
 		time.sleep(3)
