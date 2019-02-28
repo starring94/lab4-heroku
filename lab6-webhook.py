@@ -52,7 +52,6 @@ def about():
 
 @app.route("/api/bot", methods = ['POST'])
 def bot():
-	time.sleep(20)
 	# process message data
 	webhookMessage = request.json
 	print(webhookMessage)
@@ -68,8 +67,6 @@ def bot():
 	r = requests.get(messageApiUrl + "/" + messageId, headers={'Authorization': 'Bearer ' + botAccessToken})
 	print(r.json())
 	message = r.json()["text"]
-	if r.json()["data"]["id"] == botId:
-                return None
         
 	print(message)
 
