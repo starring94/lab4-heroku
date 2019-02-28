@@ -2,6 +2,7 @@ import sqlite3
 from flask import Flask, request, jsonify, send_from_directory
 import os
 import requests
+import time
 
 app = Flask(__name__)
 
@@ -72,6 +73,7 @@ def bot():
 	if message[0:18] == "wth2018-2133 Hello":
 		roomId = r.json()["roomId"]
 		r = requests.post(messageApiUrl, headers={'Authorization': 'Bearer ' + botAccessToken}, data={'roomId': roomId, 'text': 'Hello from your bot!'})
+		time.sleep(3)
 	return jsonify(webhookMessage)
 
 initDatabase()
