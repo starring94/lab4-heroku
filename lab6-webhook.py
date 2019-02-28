@@ -52,6 +52,7 @@ def about():
 
 @app.route("/api/bot", methods = ['POST'])
 def bot():
+        time.sleep(20)
         # process message data
 	webhookMessage = request.json
 	print(webhookMessage)
@@ -74,7 +75,6 @@ def bot():
 		print('ÜZI: ' + message)
 		roomId = r.json()["roomId"]
 		r = requests.post(messageApiUrl, headers={'Authorization': 'Bearer ' + botAccessToken}, data={'roomId': roomId, 'text': 'Hello from your bot!'})
-		time.sleep(3)
 	return jsonify(webhookMessage)
 
 initDatabase()
