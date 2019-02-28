@@ -51,6 +51,12 @@ def about():
 
 @app.route("/api/bot", methods = ['POST'])
 def bot():
+        # process message data
+	webhookMessage = request.json
+	print(webhookMessage)
+	messageId = webhookMessage["data"]["id"]
+	print(messageId)
+	
 	#get message text
 	messageApiUrl = "https://api.ciscospark.com/v1/messages" 
 	# wth2018-3456
