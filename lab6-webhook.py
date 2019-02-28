@@ -52,8 +52,8 @@ def about():
 
 @app.route("/api/bot", methods = ['POST'])
 def bot():
-        time.sleep(20)
-        # process message data
+	time.sleep(20)
+	# process message data
 	webhookMessage = request.json
 	print(webhookMessage)
 	messageId = webhookMessage["data"]["id"]
